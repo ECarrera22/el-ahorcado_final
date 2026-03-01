@@ -20,15 +20,15 @@ PALABRAS = {
 
 def mostrar_menu():
     print("\n=== JUEGO DEL AHORCADO EDUCATIVO ===")
-    print("Versión:", CONFIG[1])
+    print("Version:", CONFIG[1])
     print("1. Jugar")
     print("2. Salir")
 
 def seleccionar_categoria():
-    print("\nCategorías disponibles:")
+    print("\nCategorias disponibles:")
     for categoria in PALABRAS:
         print("-", categoria)
-    categoria = input("Seleccione una categoría: ")
+    categoria = input("Seleccione una categoria: ")
     return categoria
 
 def elegir_palabra(categoria):
@@ -36,13 +36,13 @@ def elegir_palabra(categoria):
 
 def validar_letra(letra, usadas):
     if len(letra) != 1:
-        print("⚠️ Ingrese solo una letra.")
+        print("Ingrese solo una letra.")
         return False
     if not letra.isalpha():
-        print("⚠️ Ingrese una letra válida.")
+        print("Ingrese una letra valida.")
         return False
     if letra in usadas:
-        print("⚠️ Esa letra ya fue usada.")
+        print("Esa letra ya fue usada.")
         return False
     return True
 
@@ -60,7 +60,7 @@ def jugar():
     categoria = seleccionar_categoria()
 
     if categoria not in PALABRAS:
-        print("❌ Categoría inválida.")
+        print("Categoria invalida.")
         return
 
     palabra = elegir_palabra(categoria)
@@ -79,19 +79,19 @@ def jugar():
 
         if letra in palabra:
             letras_correctas.add(letra)
-            print("✅ Correcto!")
+            print("Correcto.")
         else:
             letras_incorrectas.add(letra)
             intentos -= 1
-            print("❌ Incorrecto.")
+            print("Incorrecto.")
 
-        # Verificar si ganó
+        # Verificar si gano
         if all(l in letras_correctas for l in palabra):
-            print("\n🎉 ¡Ganaste!")
+            print("\nGanaste.")
             print("La palabra era:", palabra)
             return
 
-    print("\n💀 Perdiste.")
+    print("\nPerdiste.")
     print("La palabra era:", palabra)
 
 # ============================
@@ -99,11 +99,11 @@ def jugar():
 # ============================
 
 mostrar_menu()
-opcion = input("Seleccione una opción: ")
+opcion = input("Seleccione una opcion: ")
 
 if opcion == "1":
     jugar()
 elif opcion == "2":
     print("Programa finalizado.")
 else:
-    print("Opción inválida.")
+    print("Opcion invalida.")
